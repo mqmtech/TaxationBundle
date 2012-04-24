@@ -2,7 +2,7 @@
 
 namespace MQM\TaxationBundle\Tests;
 
-use Symfony\Bundle\FrameworkBundle\Tests\Functional\AppKernel;
+
 
 class TaxationManagerTest extends \Symfony\Bundle\FrameworkBundle\Test\WebTestCase
 {   
