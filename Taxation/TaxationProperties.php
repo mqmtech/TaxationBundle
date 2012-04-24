@@ -2,7 +2,7 @@
 
 namespace MQM\TaxationBundle\Taxation;
 
-use MQM\TaxationBundle\Taxation\PropertiesInterface;
+use MQM\ToolsBundle\IO\PropertiesInterface;
 
 final class TaxationProperties implements PropertiesInterface
 {
@@ -20,5 +20,21 @@ final class TaxationProperties implements PropertiesInterface
             return self::$CONFIG[$name];
         
         return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setProperty($name, $value)
+    {
+        self::$CONFIG[$name] = $value;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function parse($path = null)
+    {
+        return $this;
     }
 }

@@ -3,7 +3,7 @@
 namespace MQM\TaxationBundle\Taxation;
 
 use MQM\TaxationBundle\Taxation\TaxationManagerInterface;
-use MQM\TaxationBundle\Taxation\PropertiesInterface;
+use MQM\ToolsBundle\IO\PropertiesInterface;
 
 class TaxationManager implements TaxationManagerInterface
 {   

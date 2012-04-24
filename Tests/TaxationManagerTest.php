@@ -2,8 +2,6 @@
 
 namespace MQM\TaxationBundle\Tests;
 
-
-
 class TaxationManagerTest extends \Symfony\Bundle\FrameworkBundle\Test\WebTestCase
 {   
     public function __construct()
@@ -39,12 +37,5 @@ class TaxationManagerTest extends \Symfony\Bundle\FrameworkBundle\Test\WebTestCa
         $taxationManager = $this->get('mqm_taxation.taxation_manager');
         $tax = $taxationManager->getTax();
         $this->assertEquals(0.18, $tax);
-    }
-    
-    public function testLocale()
-    {
-        $session = $this->get('session');        
-        $this->assertNotNull($session);        
-        $this->assertEquals('es', $session->getLocale());
     }
 }

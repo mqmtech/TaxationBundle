@@ -5,7 +5,9 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="mqm_taxation.taxation_config.class">MQM\TaxationBundle\Taxation\TaxationProperties</parameter>
+        <parameter key="mqm_taxation.taxation_config.class">MQM\ToolsBundle\IO\PropertiesInterface</parameter>
+        <parameter key="mqm_taxation.taxation_config_factory.class">MQM\TaxationBundle\Taxation\TaxationPropertiesFactory</parameter>
+        <parameter key="mqm_taxation.config_path">/Resources/config/taxation.yml</parameter>
         <parameter key="mqm_taxation.taxation_manager.class">MQM\TaxationBundle\Taxation\TaxationManager</parameter>
         <parameter key="mqm_taxation.locale">es</parameter>
     </parameters>
@@ -15,8 +17,15 @@
             <argument type="service" id="mqm_taxation.taxation_config" />
             <argument>%mqm_taxation.locale%</argument>
         </service>
-        
-        <service id="mqm_taxation.taxation_config" class="%mqm_taxation.taxation_config.class%" public="true">
+
+        <service id="mqm_taxation.taxation_config" class="%mqm_taxation.taxation_config.class%" public="true"
+            factory-service="mqm_taxation.taxation_config_factory"
+            factory-method="createProperties">
+        </service>
+            
+        <service id="mqm_taxation.taxation_config_factory" class="%mqm_taxation.taxation_config_factory.class%" public="true">
+            <argument type="service" id="mqm_tools.yaml_reader" />
+            <argument>%mqm_taxation.config_path%</argument>
         </service>
     </services>
 </container>
