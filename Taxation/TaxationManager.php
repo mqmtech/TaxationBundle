@@ -23,4 +23,14 @@ class TaxationManager implements TaxationManagerInterface
     {        
        return $this->config->getProperty('tax_' . $this->locale);
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function saveTax($tax)
+    {
+        $this->config->setProperty('tax_' . $this->locale, $tax);
+        
+        return $this;
+    }
 }
