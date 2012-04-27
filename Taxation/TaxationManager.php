@@ -21,7 +21,7 @@ class TaxationManager implements TaxationManagerInterface
      */
     public function getTax()
     {        
-       return $this->config->getProperty('tax_' . $this->locale);
+       return (float) $this->config->getProperty('tax_' . $this->locale);
     }
 
     /**
@@ -29,6 +29,7 @@ class TaxationManager implements TaxationManagerInterface
      */
     public function saveTax($tax)
     {
+        $tax = (float) $tax;
         $this->config->setProperty('tax_' . $this->locale, $tax);
         
         return $this;
