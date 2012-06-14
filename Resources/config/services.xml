@@ -24,7 +24,7 @@
         </service>
             
         <service id="mqm_taxation.taxation_config_factory" class="%mqm_taxation.taxation_config_factory.class%" public="true">
-            <argument type="service" id="mqm_tools.yaml_reader" />
+            <argument type="service" id="mqm_tools.yaml_reader" strict="false"/>
             <argument>%mqm_taxation.config_path%</argument>
         </service>
     </services>
